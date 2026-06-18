@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  
+  <title>Nexus Tech — Soluções em Tecnologia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+
+  <!-- ══════════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════════ -->
+  <nav role="navigation" aria-label="Navegação principal">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+          <rect width="22" height="22" rx="6" fill="#3B82F6"/>
+          <path d="M6 11 L11 6 L16 11 L11 16 Z" fill="white" opacity="0.9"/>
+        </svg>
+        Nexus<span>Tech</span>
+      </a>
+      <ul class="nav-links" style="margin-left: auto; margin-right: 2rem;">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#catalogo">Serviços</a></li>
+        <li><a href="#depoimentos">Clientes</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+      <a href="#contato" class="nav-cta">Fale conosco</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════ -->
+  <section class="hero" id="inicio">
+    <div class="container">
+      <span class="tag tag--blue">// Tecnologia que evolui com você</span>
+      
+      <h1>Soluções digitais para <em>empresas que crescem</em></h1>
+      <p>Desenvolvimento web, consultoria em TI e automação de processos para pequenas e médias empresas do interior de São Paulo.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})">Ver nossos serviços</button>
+        <button class="btn-outline" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})">Solicitar orçamento</button>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="container">
+      <div class="stats">
+        <div class="stat"><strong>+120</strong><span>Clientes atendidos</span></div>
+        <div class="stat"><strong>8 anos</strong><span>No mercado</span></div>
+        <div class="stat"><strong>98%</strong><span>Satisfação</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SOBRE
+  ══════════════════════════════════════════════ -->
+  <section class="section" id="sobre">
+    <div class="container">
+      <p class="section-label">// sobre nós</p>
+      <h2>Tecnologia local, <br>resultado global</h2>
+      <p>Somos uma empresa de Uberaba especializada em transformação digital para negócios que querem crescer com inteligência e eficiência.</p>
+
+      
+      <div class="about-grid">
+        <div>
+          <p style="color: var(--muted); margin-bottom: 1.5rem;">Desde 2016, ajudamos empresas a estruturar sua presença digital, automatizar processos e tomar decisões baseadas em dados. Nossa equipe é formada por engenheiros, designers e consultores apaixonados por resolver problemas reais.</p>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:0.75rem;">
+            <li style="display:flex;align-items:center;gap:10px;font-size:0.9rem;"><span style="color:var(--green)">✓</span> Projetos entregues no prazo</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:0.9rem;"><span style="color:var(--green)">✓</span> Suporte técnico dedicado</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:0.9rem;"><span style="color:var(--green)">✓</span> Tecnologias modernas e escaláveis</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:0.9rem;"><span style="color:var(--green)">✓</span> Atendimento 100% personalizado</li>
+          </ul>
+        </div>
+        <div class="about-visual" aria-label="Exemplo de código ilustrativo">
+          <div class="line"><span class="c-pink">const</span> <span class="c-blue">empresa</span> = {</div>
+          <div class="line c-muted" style="padding-left:1.2rem;">// NexusTech — Uberaba/MG</div>
+          <div class="line" style="padding-left:1.2rem;"><span class="c-amber">nome</span>: <span class="c-green">'Nexus Tech'</span>,</div>
+          <div class="line" style="padding-left:1.2rem;"><span class="c-amber">fundação</span>: <span class="c-blue">2016</span>,</div>
+          <div class="line" style="padding-left:1.2rem;"><span class="c-amber">clientes</span>: <span class="c-blue">120</span>,</div>
+          <div class="line" style="padding-left:1.2rem;"><span class="c-amber">missão</span>: <span class="c-green">'Digitalizar o interior'</span>,</div>
+          <div class="line" style="padding-left:1.2rem;"><span class="c-amber">stack</span>: [<span class="c-green">'HTML'</span>, <span class="c-green">'CSS'</span>, <span class="c-green">'JS'</span>, <span class="c-green">'Node'</span>],</div>
+          <div class="line">};</div>
+          <br>
+          <div class="line"><span class="c-pink">function</span> <span class="c-blue">atender</span>(cliente) {</div>
+          <div class="line" style="padding-left:1.2rem;"><span class="c-pink">return</span> <span class="c-green">`Olá, ${<span class="c-amber">cliente</span>}! 🚀`</span>;</div>
+          <div class="line">}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CATÁLOGO DE SERVIÇOS
+  ══════════════════════════════════════════════ -->
+  <section class="section" id="catalogo" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <p class="section-label">// nossos serviços</p>
+      <h2>O que oferecemos</h2>
+      <p>Soluções sob medida para cada etapa do crescimento do seu negócio digital.</p>
+
+      <div class="catalog-grid">
+
+        <div class="card">
+          <div class="card-badge badge--popular">Popular</div>
+          <div class="card-icon card-icon--blue">🌐</div>
+          <span class="tag tag--blue">sites & sistemas</span>
+          <h3>Desenvolvimento Web</h3>
+          <p>Sites institucionais, landing pages e sistemas web responsivos com foco em performance e acessibilidade.</p>
+          <div class="card-price">R$ 2.500 <span>/ projeto</span></div>
+          <button class="btn-primary" style="width:100%;font-size:0.85rem;" onclick="openModal('web')">Ver detalhes</button>
+        </div>
+
+        <div class="card">
+          <div class="card-badge badge--new">Novo</div>
+          <div class="card-icon card-icon--purple">🤖</div>
+          <span class="tag tag--amber">automação</span>
+          <h3>Automação de Processos</h3>
+          <p>Automatize tarefas repetitivas com scripts e integrações que economizam horas da sua equipe toda semana.</p>
+          <div class="card-price">R$ 1.800 <span>/ mês</span></div>
+          <button class="btn-primary" style="width:100%;font-size:0.85rem;" onclick="openModal('auto')">Ver detalhes</button>
+        </div>
+
+        <div class="card">
+          <div class="card-icon card-icon--green">📊</div>
+          <span class="tag tag--green">dados & BI</span>
+          <h3>Dashboard & Analytics</h3>
+          <p>Painéis interativos com seus dados de negócio em tempo real. Tome decisões com base em informações concretas.</p>
+          <div class="card-price">R$ 3.200 <span>/ projeto</span></div>
+          <button class="btn-primary" style="width:100%;font-size:0.85rem;" onclick="openModal('dash')">Ver detalhes</button>
+        </div>
+
+        <div class="card">
+          <div class="card-icon card-icon--amber">🔧</div>
+          <span class="tag tag--amber">suporte</span>
+          <h3>Consultoria em TI</h3>
+          <p>Avaliação da infraestrutura, segurança digital e roadmap tecnológico personalizado para sua empresa.</p>
+          <div class="card-price">R$ 900 <span>/ hora</span></div>
+          <button class="btn-primary" style="width:100%;font-size:0.85rem;" onclick="openModal('ti')">Ver detalhes</button>
+        </div>
+
+        <div class="card">
+          <div class="card-icon card-icon--blue">📱</div>
+          <span class="tag tag--blue">mobile</span>
+          <h3>App Mobile</h3>
+          <p>Aplicativos para Android e iOS com experiência nativa, publicação nas lojas e manutenção contínua.</p>
+          <div class="card-price">R$ 8.000 <span>/ projeto</span></div>
+          <button class="btn-primary" style="width:100%;font-size:0.85rem;" onclick="openModal('app')">Ver detalhes</button>
+        </div>
+
+        <div class="card">
+          <div class="card-icon card-icon--green">🛒</div>
+          <span class="tag tag--green">e-commerce</span>
+          <h3>Loja Virtual</h3>
+          <p>E-commerce completo com gestão de produtos, pagamento integrado e relatórios de vendas em tempo real.</p>
+          <div class="card-price">R$ 4.500 <span>/ projeto</span></div>
+          <button class="btn-primary" style="width:100%;font-size:0.85rem;" onclick="openModal('ecom')">Ver detalhes</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       DEPOIMENTOS
+  ══════════════════════════════════════════════ -->
+  <section class="section" id="depoimentos">
+    <div class="container">
+      <p class="section-label">// clientes</p>
+      <h2>O que dizem sobre nós</h2>
+      <p>Empresas reais, resultados concretos.</p>
+
+      
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <p class="testimonial-text">"A NexusTech criou nosso e-commerce em tempo recorde. As vendas online já representam 40% do nosso faturamento."</p>
+          <div class="testimonial-author">
+            <div class="avatar" style="background:#1e3a5f;color:#93c5fd;">RC</div>
+            <div><strong>Rafael Costa</strong><span>CEO — Empório Costa</span></div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p class="testimonial-text">"A automação que eles implementaram eliminou 3 horas diárias de trabalho manual da minha equipe financeira."</p>
+          <div class="testimonial-author">
+            <div class="avatar" style="background:#052e16;color:#86efac;">AM</div>
+            <div><strong>Ana Melo</strong><span>CFO — Melo & Associados</span></div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p class="testimonial-text">"O dashboard de análise de dados mudou como tomamos decisões. Recomendo a qualquer empresa que queira crescer."</p>
+          <div class="testimonial-author">
+            <div class="avatar" style="background:#2e1065;color:#c4b5fd;">TS</div>
+            <div><strong>Tiago Sousa</strong><span>Diretor — Sousa Agro</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CONTATO
+  ══════════════════════════════════════════════ -->
+  <section class="section" id="contato" style="background: var(--surface); border-top: 1px solid var(--border);">
+    <div class="container">
+      <p class="section-label">// contato</p>
+      <h2>Vamos conversar?</h2>
+      <p>Preencha o formulário e nossa equipe entra em contato em até 24 horas.</p>
+
+      <div class="contact-grid">
+        
+        <form id="contactForm" onsubmit="return handleSubmit(event)">
+          <div class="form-group">
+            <label for="name">Nome completo *</label>
+            <input type="text" id="name" placeholder="Seu nome" required />
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" placeholder="seu@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="service">Serviço de interesse</label>
+            <select id="service">
+              <option value="">Selecione um serviço...</option>
+              <option value="web">Desenvolvimento Web</option>
+              <option value="auto">Automação de Processos</option>
+              <option value="dash">Dashboard & Analytics</option>
+              <option value="ti">Consultoria em TI</option>
+              <option value="app">App Mobile</option>
+              <option value="ecom">Loja Virtual</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Mensagem *</label>
+            <textarea id="message" placeholder="Descreva seu projeto ou dúvida..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;">Enviar mensagem</button>
+        </form>
+
+        <div class="contact-info">
+          <h3>Informações de contato</h3>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div><strong>Endereço</strong>Av. Independência, 2500 — Uberaba/MG</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div><strong>Telefone</strong>(19) 3200-0000</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div><strong>E-mail</strong>contato@nexustech.com.br</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🕐</div>
+            <div><strong>Horário</strong>Seg–Sex, 8h às 18h</div>
+          </div>
+
+          <div style="margin-top:2rem; padding:1.25rem; background:var(--surface2); border-radius:10px; border:1px solid var(--border);">
+            <p style="font-size:0.8rem; color:var(--muted); margin-bottom:0.5rem; font-family:var(--mono);">// resposta garantida em</p>
+            <p style="font-size:2rem; font-weight:700; color:var(--blue);">24h</p>
+            <p style="font-size:0.85rem; color:var(--muted);">dias úteis para propostas comerciais</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       RODAPÉ
+  ══════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="display:inline-flex;">
+          <svg width="20" height="20" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+            <rect width="22" height="22" rx="6" fill="#3B82F6"/>
+            <path d="M6 11 L11 6 L16 11 L11 16 Z" fill="white" opacity="0.9"/>
+          </svg>
+          Nexus<span>Tech</span>
+        </a>
+        <p>Transformação digital para empresas que querem crescer com inteligência e resultado.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="#catalogo">Desenvolvimento Web</a></li>
+          <li><a href="#catalogo">Automação</a></li>
+          <li><a href="#catalogo">Analytics</a></li>
+          <li><a href="#catalogo">Consultoria</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#sobre">Sobre nós</a></li>
+          
+          <li><a href="#section-errado">Cases</a></li>
+          <li><a href="#depoimentos">Clientes</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="mailto:contato@nexustech.com.br">E-mail</a></li>
+          <li><a href="tel:+551932000000">Telefone</a></li>
+          <li><a href="#">WhatsApp</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 NexusTech. Todos os direitos reservados.</span>
+      <span>Uberaba, Minas Gerais</span>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════
+       MODAL DE DETALHES DO SERVIÇO
+  ══════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()" aria-label="Fechar">×</button>
+      <h3 id="modalTitle">Título</h3>
+      <p id="modalDesc">Descrição</p>
+      <ul id="modalList" style="list-style:none;display:flex;flex-direction:column;gap:8px;font-size:0.88rem;color:var(--muted);"></ul>
+      <button class="btn-primary" style="width:100%;margin-top:1.5rem;" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'}); closeModal()">Solicitar orçamento</button>
+    </div>
+  </div>
+
+  <!-- Toast de feedback -->
+  <div id="toast" role="alert" aria-live="polite"></div>
+
+  <!-- ══════════════════════════════════════════════
+       JAVASCRIPT
+  ══════════════════════════════════════════════ -->
+  <script>
+    /* ─── Dados dos modais ─── */
+    const serviceData = {
+      web:  { title: 'Desenvolvimento Web', desc: 'Site institucional, landing page ou sistema web do zero.', items: ['Domínio e hospedagem inclusos no 1º ano', 'Design responsivo (mobile + desktop)', 'Painel de administração (CMS)', 'SEO técnico básico', 'Entrega em até 30 dias'] },
+      auto: { title: 'Automação de Processos', desc: 'Elimine tarefas manuais e aumente a produtividade da sua equipe.', items: ['Mapeamento dos fluxos de trabalho', 'Integração com ferramentas existentes', 'Dashboards de monitoramento', 'Suporte mensal incluso', 'Relatórios automáticos'] },
+      dash: { title: 'Dashboard & Analytics', desc: 'Visualize dados do seu negócio em tempo real.', items: ['Conexão com suas fontes de dados', 'Gráficos e KPIs personalizados', 'Alertas automáticos por e-mail', 'Exportação em PDF/Excel', 'Treinamento da equipe incluso'] },
+      ti:   { title: 'Consultoria em TI', desc: 'Diagnóstico e planejamento tecnológico sob medida.', items: ['Auditoria de infraestrutura', 'Plano de segurança digital', 'Roadmap de tecnologia (12 meses)', 'Relatório detalhado entregue', 'Reuniões de acompanhamento'] },
+      app:  { title: 'App Mobile', desc: 'Aplicativo nativo para Android e iOS.', items: ['UI/UX design incluso', 'Publicação nas lojas (App Store + Play)', 'Notificações push', 'Painel web de administração', '3 meses de suporte gratuito'] },
+      ecom: { title: 'Loja Virtual', desc: 'E-commerce completo pronto para vender online.', items: ['Cadastro de até 500 produtos', 'Gateway de pagamento integrado', 'Gestão de pedidos e estoque', 'Relatórios de vendas', 'Integração com Correios/transportadoras'] }
+    };
+
+    function openModal(key) {
+      const d = serviceData[key];
+      if (!d) return;
+      document.getElementById('modalTitle').textContent = d.title;
+      document.getElementById('modalDesc').textContent = d.desc;
+      const list = document.getElementById('modalList');
+      list.innerHTML = d.items.map(i => `<li style="display:flex;gap:8px;align-items:center;"><span style="color:var(--green)">✓</span>${i}</li>`).join('');
+      document.getElementById('modalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(e) {
+      if (e && e.target !== document.getElementById('modalOverlay') && !e.currentTarget.classList.contains('modal-close')) return;
+      document.getElementById('modalOverlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    /* ─── Toast ─── */
+    function showToast(msg, type = 'success') {
+      const t = document.getElementById('toast');
+      t.innerHTML = `<span>${type === 'success' ? '✅' : '❌'}</span> ${msg}`;
+      t.className = `show ${type}`;
+      setTimeout(() => { t.className = ''; }, 4000);
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault();
+
+      const name    = document.getElementById('name').value.trim();
+      const email   = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      // BUG: .lenght não existe — deveria ser .length (typo proposital)
+      if (name.lenght === 0) {
+        showToast('Por favor, informe seu nome.', 'error');
+        return false;
+      }
+
+      if (!email.includes('@')) {
+        showToast('E-mail inválido.', 'error');
+        return false;
+      }
+
+      
+      if (message.length = 0) {
+        showToast('A mensagem não pode estar vazia.', 'error');
+        return false;
+      }
+
+      // Se chegou aqui, simula envio bem-sucedido
+      showToast('Mensagem enviada! Retornaremos em até 24h. ✉️');
+      document.getElementById('contactForm').reset();
+      return false;
+    }
+
+    /* ─── Smooth scroll para âncoras ─── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
