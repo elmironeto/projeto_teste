@@ -2,7 +2,8 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Correção v1.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nexus Tech — Soluções em Tecnologia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,7 +13,6 @@
 </head>
 
 <body>
-
 
   <!-- ══════════════════════════════════════════════
        NAVBAR
@@ -32,7 +32,8 @@
         <li><a href="#depoimentos">Clientes</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
-      <a href="#contato" class="nav-cta">Fale conosco</a>
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Alternar tema claro/escuro" title="Alternar tema">🌙</button>
+      <a href="#contato" class="nav-cta" style="margin-left: 0.75rem;">Fale conosco</a>
     </div>
   </nav>
 
@@ -68,9 +69,8 @@
     <div class="container">
       <p class="section-label">// sobre nós</p>
       <h2>Tecnologia local, <br>resultado global</h2>
-      <p>Somos uma empresa de Uberaba especializada em transformação digital para negócios que querem crescer com inteligência e eficiência.</p>
+      <p>Somos uma empresa de Piracicaba especializada em transformação digital para negócios que querem crescer com inteligência e eficiência.</p>
 
-      
       <div class="about-grid">
         <div>
           <p style="color: var(--muted); margin-bottom: 1.5rem;">Desde 2016, ajudamos empresas a estruturar sua presença digital, automatizar processos e tomar decisões baseadas em dados. Nossa equipe é formada por engenheiros, designers e consultores apaixonados por resolver problemas reais.</p>
@@ -83,7 +83,7 @@
         </div>
         <div class="about-visual" aria-label="Exemplo de código ilustrativo">
           <div class="line"><span class="c-pink">const</span> <span class="c-blue">empresa</span> = {</div>
-          <div class="line c-muted" style="padding-left:1.2rem;">// NexusTech — Uberaba/MG</div>
+          <div class="line c-muted" style="padding-left:1.2rem;">// NexusTech — Piracicaba/SP</div>
           <div class="line" style="padding-left:1.2rem;"><span class="c-amber">nome</span>: <span class="c-green">'Nexus Tech'</span>,</div>
           <div class="line" style="padding-left:1.2rem;"><span class="c-amber">fundação</span>: <span class="c-blue">2016</span>,</div>
           <div class="line" style="padding-left:1.2rem;"><span class="c-amber">clientes</span>: <span class="c-blue">120</span>,</div>
@@ -179,7 +179,6 @@
       <h2>O que dizem sobre nós</h2>
       <p>Empresas reais, resultados concretos.</p>
 
-      
       <div class="testimonials-grid">
         <div class="testimonial">
           <p class="testimonial-text">"A NexusTech criou nosso e-commerce em tempo recorde. As vendas online já representam 40% do nosso faturamento."</p>
@@ -253,7 +252,7 @@
           </div>
           <div class="contact-item">
             <div class="contact-item-icon">📞</div>
-            <div><strong>Telefone</strong>(19) 3200-0000</div>
+            <div><strong>Telefone</strong>(34) 3200-0000</div>
           </div>
           <div class="contact-item">
             <div class="contact-item-icon">✉️</div>
@@ -302,7 +301,6 @@
         <h4>Empresa</h4>
         <ul>
           <li><a href="#sobre">Sobre nós</a></li>
-          
           <li><a href="#catalogo">Cases</a></li>
           <li><a href="#depoimentos">Clientes</a></li>
           <li><a href="#contato">Contato</a></li>
@@ -312,7 +310,7 @@
         <h4>Contato</h4>
         <ul>
           <li><a href="mailto:contato@nexustech.com.br">E-mail</a></li>
-          <li><a href="tel:+551932000000">Telefone</a></li>
+          <li><a href="tel:+553432000000">Telefone</a></li>
           <li><a href="#">WhatsApp</a></li>
           <li><a href="#">LinkedIn</a></li>
         </ul>
@@ -379,6 +377,11 @@
       setTimeout(() => { t.className = ''; }, 4000);
     }
 
+    /* v1.1 - Correção
+       O operador de comparação está errado: usa = (atribuição) em vez de === (comparação),
+       fazendo a validação do campo de mensagem nunca funcionar corretamente.
+       Além disso, o campo "name" é verificado com .value.lenght (typo: falta o 'g').
+    ─────────────────────────────────────────────────────────────── */
     function handleSubmit(event) {
       event.preventDefault();
 
@@ -396,7 +399,6 @@
         return false;
       }
 
-      
       if (message.length === 0) {
         showToast('A mensagem não pode estar vazia.', 'error');
         return false;
@@ -418,6 +420,50 @@
         }
       });
     });
+
+    /* ─── MODO ESCURO / CLARO ───
+       Alterna o atributo data-theme no <html>, que ativa as variáveis
+       CSS de tema claro definidas em html[data-theme="light"].
+       A preferência é salva no localStorage e respeitada ao recarregar a página.
+    ───────────────────────────────────────────────────────────────── */
+    function applyTheme(theme) {
+      const html = document.documentElement;
+      const btn = document.getElementById('themeToggle');
+      if (theme === 'light') {
+        html.setAttribute('data-theme', 'light');
+        btn.textContent = '🌙';
+      } else {
+        html.removeAttribute('data-theme');
+        btn.textContent = '☀️';
+      }
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+      const next = current === 'light' ? 'dark' : 'light';
+      applyTheme(next);
+      try {
+        localStorage.setItem('nexustech-theme', next);
+      } catch (e) {
+        // Ambiente sem acesso a localStorage (ex: iframe restrito) — segue sem persistir
+      }
+    }
+
+    (function initTheme() {
+      let saved = null;
+      try {
+        saved = localStorage.getItem('nexustech-theme');
+      } catch (e) {
+        saved = null;
+      }
+      if (saved === 'light' || saved === 'dark') {
+        applyTheme(saved);
+      } else {
+        // Sem preferência salva: respeita o tema do sistema operacional do usuário
+        const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+        applyTheme(prefersLight ? 'light' : 'dark');
+      }
+    })();
   </script>
 
 </body>

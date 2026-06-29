@@ -17,6 +17,21 @@
       --sans:      'Inter', sans-serif;
     }
 
+    /* ─── TEMA CLARO ─── */
+    html[data-theme="light"] {
+      --bg:        #F8FAFC;
+      --surface:   #FFFFFF;
+      --surface2:  #F1F5F9;
+      --border:    #E2E8F0;
+      --blue:      #2563EB;
+      --blue-dim:  #1D4ED8;
+      --amber:     #D97706;
+      --red:       #DC2626;
+      --green:     #16A34A;
+      --text:      #0F172A;
+      --muted:     #64748B;
+    }
+
     html { scroll-behavior: smooth; }
 
     body {
@@ -25,7 +40,22 @@
       font-family: var(--sans);
       font-size: 16px;
       line-height: 1.6;
+      transition: background 0.25s, color 0.25s;
     }
+
+    /* Elementos com cores fixas que precisam inverter no tema claro */
+    html[data-theme="light"] .devtools-bar { background: #E2E8F0; }
+    html[data-theme="light"] .nav-cta { color: #fff !important; }
+    html[data-theme="light"] .tag--blue  { background: #DBEAFE; color: #1D4ED8; }
+    html[data-theme="light"] .tag--amber { background: #FEF3C7; color: #B45309; }
+    html[data-theme="light"] .tag--red   { background: #FEE2E2; color: #B91C1C; }
+    html[data-theme="light"] .tag--green { background: #DCFCE7; color: #15803D; }
+    html[data-theme="light"] .card-icon--blue   { background: #DBEAFE; }
+    html[data-theme="light"] .card-icon--amber  { background: #FEF3C7; }
+    html[data-theme="light"] .card-icon--green  { background: #DCFCE7; }
+    html[data-theme="light"] .card-icon--purple { background: #EDE9FE; }
+    html[data-theme="light"] .badge--popular { background: #DBEAFE; color: #1D4ED8; }
+    html[data-theme="light"] .badge--new     { background: #DCFCE7; color: #15803D; }
 
     a { color: var(--blue); text-decoration: none; }
     a:hover { text-decoration: underline; }
@@ -81,7 +111,7 @@
     .nav-inner {
       display: flex;
       align-items: center;
-      
+      /* v1.1 Correção: justify-content errado — os itens ficam todos à esquerda em vez de espaçados. Alterado de flex-start para space-between */
       justify-content: space-between;
       padding: 0 1.5rem;
       height: 64px;
@@ -123,6 +153,24 @@
     }
     .nav-cta:hover { background: var(--blue-dim); text-decoration: none !important; }
 
+    .theme-toggle {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      color: var(--text);
+      font-size: 1.05rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, transform 0.15s;
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover { border-color: var(--blue); transform: scale(1.06); }
+    .theme-toggle:active { transform: scale(0.94); }
+
     /* ─── HERO ─── */
     .hero {
       padding: 6rem 1.5rem 4rem;
@@ -134,6 +182,7 @@
       font-weight: 700;
       line-height: 1.15;
       margin-bottom: 1.25rem;
+      /* v1.1 Correção. Alterar de #1a1a2e para var correta */
       color: var(--text);
     }
 
@@ -217,7 +266,7 @@
     .section p { color: var(--muted); max-width: 600px; }
 
     .about-grid {
-      
+      /* v1.1 - Correção: grid com coluna única — deveria ser "1fr 1fr" para layout lado a lado */
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
@@ -225,7 +274,7 @@
       margin-top: 3rem;
     }
     .about-visual {
-      background: var(--surface);
+      background: #161925;
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 2rem;
@@ -305,10 +354,10 @@
 
     /* ─── DEPOIMENTOS ─── */
     .testimonials-grid {
-      
+      /* v1.1 - Correção: gap negativo — causa sobreposição dos cards de depoimento. Alterado de -20px para 1.5 rem */
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem; 
+      gap: 1.5rem;
       margin-top: 3rem;
     }
     .testimonial {
