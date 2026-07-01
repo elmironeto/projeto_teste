@@ -2,8 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <!-- Correção v1.1 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
   <title>Nexus Tech — Soluções em Tecnologia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -219,12 +218,22 @@
         <form id="contactForm" onsubmit="return handleSubmit(event)">
           <div class="form-group">
             <label for="name">Nome completo *</label>
-            <input type="text" id="name" placeholder="Seu nome" required />
+            <div class="field-wrap">
+              <input type="text" id="name" placeholder="Seu nome" required />
+              <span class="field-status" id="nameStatus">✓</span>
+            </div>
+            <div class="field-hint" id="nameHint" aria-live="polite"></div>
           </div>
+
           <div class="form-group">
             <label for="email">E-mail *</label>
-            <input type="email" id="email" placeholder="seu@email.com" required />
+            <div class="field-wrap">
+              <input type="email" id="email" placeholder="seu@email.com" required />
+              <span class="field-status" id="emailStatus">✓</span>
+            </div>
+            <div class="field-hint" id="emailHint" aria-live="polite"></div>
           </div>
+
           <div class="form-group">
             <label for="service">Serviço de interesse</label>
             <select id="service">
@@ -235,13 +244,25 @@
               <option value="ti">Consultoria em TI</option>
               <option value="app">App Mobile</option>
               <option value="ecom">Loja Virtual</option>
+              <option value="outros">Outros</option>
             </select>
           </div>
+
           <div class="form-group">
             <label for="message">Mensagem *</label>
-            <textarea id="message" placeholder="Descreva seu projeto ou dúvida..." required></textarea>
+            <div class="field-wrap">
+              <textarea id="message" placeholder="Descreva seu projeto ou dúvida..." required></textarea>
+            </div>
+            <div class="strength-bar" id="strengthBar" aria-hidden="true">
+              <div class="seg" id="seg1"></div>
+              <div class="seg" id="seg2"></div>
+              <div class="seg" id="seg3"></div>
+            </div>
+            <div class="char-counter" id="charCounter">0 caracteres</div>
+            <div class="field-hint" id="messageHint" aria-live="polite"></div>
           </div>
-          <button type="submit" class="btn-primary" style="width:100%;">Enviar mensagem</button>
+
+          <button type="submit" class="btn-primary" id="submitBtn" style="width:100%;" disabled>Enviar mensagem</button>
         </form>
 
         <div class="contact-info">
@@ -310,7 +331,7 @@
         <h4>Contato</h4>
         <ul>
           <li><a href="mailto:contato@nexustech.com.br">E-mail</a></li>
-          <li><a href="tel:+553432000000">Telefone</a></li>
+          <li><a href="tel:+551932000000">Telefone</a></li>
           <li><a href="#">WhatsApp</a></li>
           <li><a href="#">LinkedIn</a></li>
         </ul>
@@ -388,6 +409,7 @@
       const name    = document.getElementById('name').value.trim();
       const email   = document.getElementById('email').value.trim();
       const message = document.getElementById('message').value.trim();
+      const service = document.getElementById('service').value.trim();
 
       if (name.length === 0) {
         showToast('Por favor, informe seu nome.', 'error');
@@ -404,11 +426,151 @@
         return false;
       }
 
+      if (service.length === 0) {
+        showToast('Serviço de interesse precisa ser selecionado.', 'error');
+        return false;
+      }
+
       // Se chegou aqui, simula envio bem-sucedido
       showToast('Mensagem enviada! Retornaremos em até 24h. ✉️');
       document.getElementById('contactForm').reset();
+      resetValidationUI();
       return false;
     }
+
+    /* ─── VALIDAÇÃO EM TEMPO REAL DO FORMULÁRIO ───
+       Pratica: eventos 'input'/'blur', classList, atributo disabled,
+       acessibilidade (aria-live nos hints) e feedback visual progressivo.
+
+       Cada campo tem uma função validate*() que:
+         1) decide se o valor é válido
+         2) aplica classes .field-valid / .field-invalid no input
+         3) mostra o ícone de status (✓ / ✖)
+         4) escreve uma mensagem de ajuda contextual
+       No final, checkFormValidity() decide se o botão de envio é habilitado.
+    ──────────────────────────────────────────────────────────────────── */
+
+    const nameInput    = document.getElementById('name');
+    const emailInput   = document.getElementById('email');
+    const messageInput = document.getElementById('message');
+    const submitBtn    = document.getElementById('submitBtn');
+
+    function setFieldState(input, statusEl, hintEl, isValid, hintMsg) {
+      input.classList.remove('field-valid', 'field-invalid');
+      statusEl.classList.remove('show', 'valid', 'invalid');
+
+      if (input.value.trim() === '') {
+        // Campo vazio: estado neutro, sem marcar erro ainda (evita "tela vermelha" ao carregar)
+        hintEl.textContent = '';
+        hintEl.classList.remove('valid', 'invalid');
+        return;
+      }
+
+      if (isValid) {
+        input.classList.add('field-valid');
+        statusEl.textContent = '✓';
+        statusEl.classList.add('show', 'valid');
+        hintEl.textContent = hintMsg || '';
+        hintEl.classList.remove('invalid');
+        hintEl.classList.add('valid');
+      } else {
+        input.classList.add('field-invalid');
+        statusEl.textContent = '✖';
+        statusEl.classList.add('show', 'invalid');
+        hintEl.textContent = hintMsg || '';
+        hintEl.classList.remove('valid');
+        hintEl.classList.add('invalid');
+      }
+    }
+
+    function validateName() {
+      const value = nameInput.value.trim();
+      // Exige nome e sobrenome (pelo menos um espaço entre palavras não vazias)
+      const valid = value.length >= 3 && value.includes(' ');
+      const hint = value === '' ? ''
+        : valid ? 'Nome válido.'
+        : value.length < 3 ? 'Nome muito curto.'
+        : 'Informe nome e sobrenome.';
+      setFieldState(nameInput, document.getElementById('nameStatus'), document.getElementById('nameHint'), valid, hint);
+      return valid;
+    }
+
+    function validateEmail() {
+      const value = emailInput.value.trim();
+      const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      const hint = value === '' ? '' : valid ? 'E-mail válido.' : 'Formato de e-mail inválido.';
+      setFieldState(emailInput, document.getElementById('emailStatus'), document.getElementById('emailHint'), valid, hint);
+      return valid;
+    }
+
+    function updateStrengthBar(length) {
+      const seg1 = document.getElementById('seg1');
+      const seg2 = document.getElementById('seg2');
+      const seg3 = document.getElementById('seg3');
+      [seg1, seg2, seg3].forEach(s => s.className = 'seg');
+
+      if (length === 0) return;
+      if (length < 20) {
+        seg1.classList.add('fill--weak');
+      } else if (length < 80) {
+        seg1.classList.add('fill--ok'); seg2.classList.add('fill--ok');
+      } else {
+        seg1.classList.add('fill--strong'); seg2.classList.add('fill--strong'); seg3.classList.add('fill--strong');
+      }
+    }
+
+    function validateMessage() {
+      const value = messageInput.value.trim();
+      const length = value.length;
+      document.getElementById('charCounter').textContent = `${length} caractere${length === 1 ? '' : 's'}`;
+      updateStrengthBar(length);
+
+      const hintEl = document.getElementById('messageHint');
+      messageInput.classList.remove('field-valid', 'field-invalid');
+      hintEl.classList.remove('valid', 'invalid');
+
+      if (value === '') {
+        hintEl.textContent = '';
+        return false;
+      }
+
+      const valid = length >= 15;
+      if (valid) {
+        messageInput.classList.add('field-valid');
+        hintEl.textContent = 'Ótimo, mensagem detalhada!';
+        hintEl.classList.add('valid');
+      } else {
+        messageInput.classList.add('field-invalid');
+        hintEl.textContent = `Mínimo de 15 caracteres (faltam ${15 - length}).`;
+        hintEl.classList.add('invalid');
+      }
+      return valid;
+    }
+
+    function checkFormValidity() {
+      const ok = validateName() && validateEmail() && validateMessage();
+      submitBtn.disabled = !ok;
+      return ok;
+    }
+
+    function resetValidationUI() {
+      [nameInput, emailInput, messageInput].forEach(el => el.classList.remove('field-valid', 'field-invalid'));
+      ['nameStatus', 'emailStatus'].forEach(id => {
+        const el = document.getElementById(id);
+        el.classList.remove('show', 'valid', 'invalid');
+      });
+      ['nameHint', 'emailHint', 'messageHint'].forEach(id => document.getElementById(id).textContent = '');
+      updateStrengthBar(0);
+      document.getElementById('charCounter').textContent = '0 caracteres';
+      submitBtn.disabled = true;
+    }
+
+    nameInput.addEventListener('input', checkFormValidity);
+    emailInput.addEventListener('input', checkFormValidity);
+    messageInput.addEventListener('input', checkFormValidity);
+
+    // Garante estado inicial coerente (botão desabilitado, contadores zerados)
+    resetValidationUI();
 
     /* ─── Smooth scroll para âncoras ─── */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
