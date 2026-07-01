@@ -352,6 +352,109 @@
     .badge--popular { background: #1e3a5f; color: #93c5fd; }
     .badge--new     { background: #052e16; color: #86efac; }
 
+    /* ─── FAQ — ACCORDION CSS PURO ─── v1.4 */
+    .faq-list {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-width: 720px;
+    }
+
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    /* Borda azul quando o item está aberto */
+    .faq-item[open] {
+      border-color: var(--blue);
+    }
+
+    .faq-item summary {
+      /* Remove o triângulo padrão do navegador */
+      list-style: none;
+      cursor: pointer;
+      padding: 1.1rem 1.4rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      user-select: none;
+      transition: color 0.2s;
+    }
+
+    /* Remove triângulo no Firefox/Chrome */
+    .faq-item summary::-webkit-details-marker { display: none; }
+
+    .faq-item[open] summary { color: var(--blue); }
+
+    /* Ícone +/× via pseudo-elemento, sem JS */
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--muted);
+      flex-shrink: 0;
+      transition: transform 0.25s, color 0.2s;
+      line-height: 1;
+    }
+
+    .faq-item[open] summary::after {
+      content: '+';
+      transform: rotate(45deg);
+      color: var(--blue);
+    }
+
+    .faq-body {
+      padding: 0 1.4rem 1.25rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.75;
+      border-top: 1px solid var(--border);
+      /* Animação de abertura suave via max-height */
+      animation: faq-open 0.2s ease;
+    }
+
+    @keyframes faq-open {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .faq-body p { margin-top: 0.9rem; }
+    .faq-body p:first-child { margin-top: 0.9rem; }
+
+    .faq-body a {
+      color: var(--blue);
+      font-weight: 500;
+    }
+
+    .faq-body ul {
+      margin-top: 0.6rem;
+      padding-left: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .faq-badge {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      margin-right: 4px;
+    }    
+
     /* ─── DEPOIMENTOS ─── */
     .testimonials-grid {
       /* v1.1 - Correção: gap negativo — causa sobreposição dos cards de depoimento. Alterado de -20px para 1.5 rem */
